@@ -10,4 +10,11 @@ defmodule Rumbl.User do
 
     timestamps
   end
+
+  def changeset(model, params \\ :empty) do
+    # modelはUser struct
+    model
+    |> cast(params, ~w(name username), []) # nameとusernameは必須
+    |> validate_length(:username, min: 1, max: 20)
+  end
 end

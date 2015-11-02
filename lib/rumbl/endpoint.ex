@@ -19,21 +19,23 @@ defmodule Rumbl.Endpoint do
     plug Phoenix.CodeReloader
   end
 
+  
   plug Plug.RequestId
+  # これはmodule plug
   plug Plug.Logger
 
   plug Plug.Parsers,
-    parsers: [:urlencoded, :multipart, :json],
-    pass: ["*/*"],
-    json_decoder: Poison
+  parsers: [:urlencoded, :multipart, :json],
+  pass: ["*/*"],
+  json_decoder: Poison
 
   plug Plug.MethodOverride
   plug Plug.Head
 
   plug Plug.Session,
-    store: :cookie,
-    key: "_rumbl_key",
-    signing_salt: "wSD1J1Ng"
+  store: :cookie,
+  key: "_rumbl_key",
+  signing_salt: "wSD1J1Ng"
 
   plug Rumbl.Router
 end
